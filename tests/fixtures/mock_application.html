@@ -1,0 +1,50 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>CareerOps Mock ATS</title>
+<style>body{font:16px system-ui;max-width:720px;margin:30px auto;padding:0 20px;background:#fafafa}label{display:block;margin-top:14px}input,select,textarea{display:block;padding:8px;width:90%;box-sizing:border-box}input[type=checkbox]{display:inline;width:auto}button{padding:12px 22px;margin:20px 0;background:#214a64;color:white;border:0}.error{color:#a00}#confirmation{padding:20px;background:#e8f6ed}</style>
+<h1>CareerOps Mock Systems</h1><h2>Backend Engineer</h2>
+<p>This local fixture collects test data only. It sends no requests and does not submit a real application.</p>
+<form id="application" novalidate>
+<section id="step1">
+<label for="full_name">Full name</label><input id="full_name" name="full_name" required>
+<label for="email">Email</label><input type="email" id="email" name="email" required>
+<label for="phone">Phone</label><input id="phone" name="phone">
+<label for="location">Location</label><input id="location" name="location">
+<label for="resume">Resume</label><input type="file" id="resume" name="resume" accept="application/pdf" required>
+<button type="button" id="next">Next</button>
+</section>
+<section id="step2" hidden>
+<label for="work_authorization">Are you authorized to work in this country?</label><select id="work_authorization" name="work_authorization" required><option value="">Select</option><option>Yes</option><option>No</option></select>
+<label for="notice">Notice period</label><input id="notice" name="notice">
+<label for="certify"><input type="checkbox" id="certify" name="certify" required>I certify these test answers are accurate</label>
+<label for="demographic">Voluntary demographic information</label><input id="demographic" name="demographic">
+<button type="submit">Submit application</button>
+</section>
+<div role="alert" id="error" class="error"></div>
+</form>
+<section id="confirmation" data-application-confirmation hidden role="status"></section>
+<script>
+const form = document.querySelector('form');
+const first = document.getElementById('step1');
+const second = document.getElementById('step2');
+const error = document.getElementById('error');
+window.careeropsMock = {submissions:0,uploaded:null,confirmation:null};
+function valid(section){
+ for(const input of section.querySelectorAll('[required]')) {
+  if(input.type==='checkbox'?!input.checked:input.type==='file'?!input.files.length:!input.value.trim()) {error.textContent='Required field missing: '+input.name;return false;}
+ }
+ error.textContent='';return true;
+}
+document.getElementById('next').onclick=()=>{
+ if(!valid(first))return;
+ const uploaded=document.getElementById('resume').files[0];
+ window.careeropsMock.uploaded={name:uploaded.name,size:uploaded.size,type:uploaded.type};
+ first.hidden=true;second.hidden=false;
+};
+form.onsubmit=e=>{
+ e.preventDefault();if(!valid(second))return;
+ window.careeropsMock.submissions++;
+ const ref='MOCK-APPLICATION-001';
+ window.careeropsMock.confirmation=ref;
+ form.hidden=true;const output=document.getElementById('confirmation');output.hidden=false;
+ output.textContent='Application submitted. Application ID: '+ref+'. Resume uploaded: '+window.careeropsMock.uploaded.name;
+};
+</script></html>

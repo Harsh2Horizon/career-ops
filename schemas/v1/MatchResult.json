@@ -1,0 +1,166 @@
+{
+  "$defs": {
+    "SkillEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "skill": {
+          "title": "Skill",
+          "type": "string"
+        },
+        "level": {
+          "enum": [
+            "professional",
+            "project",
+            "listed",
+            "approved",
+            "unverified"
+          ],
+          "title": "Level",
+          "type": "string"
+        },
+        "fact_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Fact Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "skill",
+        "level"
+      ],
+      "title": "SkillEvidence",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "job_id": {
+      "title": "Job Id",
+      "type": "string"
+    },
+    "input_hash": {
+      "title": "Input Hash",
+      "type": "string"
+    },
+    "overall_score": {
+      "maximum": 100,
+      "minimum": 0,
+      "title": "Overall Score",
+      "type": "number"
+    },
+    "skill_score": {
+      "maximum": 100,
+      "minimum": 0,
+      "title": "Skill Score",
+      "type": "number"
+    },
+    "experience_score": {
+      "maximum": 100,
+      "minimum": 0,
+      "title": "Experience Score",
+      "type": "number"
+    },
+    "domain_score": {
+      "maximum": 100,
+      "minimum": 0,
+      "title": "Domain Score",
+      "type": "number"
+    },
+    "location_score": {
+      "maximum": 100,
+      "minimum": 0,
+      "title": "Location Score",
+      "type": "number"
+    },
+    "preference_score": {
+      "maximum": 100,
+      "minimum": 0,
+      "title": "Preference Score",
+      "type": "number"
+    },
+    "matched_skills": {
+      "items": {
+        "$ref": "#/$defs/SkillEvidence"
+      },
+      "title": "Matched Skills",
+      "type": "array"
+    },
+    "transferable_skills": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Transferable Skills",
+      "type": "array"
+    },
+    "missing_required_skills": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Missing Required Skills",
+      "type": "array"
+    },
+    "missing_preferred_skills": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Missing Preferred Skills",
+      "type": "array"
+    },
+    "blocking_requirements": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Blocking Requirements",
+      "type": "array"
+    },
+    "unresolved_eligibility": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Unresolved Eligibility",
+      "type": "array"
+    },
+    "recommendation": {
+      "enum": [
+        "Strong Match",
+        "Good Match",
+        "Stretch Opportunity",
+        "Poor Match"
+      ],
+      "title": "Recommendation",
+      "type": "string"
+    },
+    "reasoning_summary": {
+      "title": "Reasoning Summary",
+      "type": "string"
+    }
+  },
+  "required": [
+    "job_id",
+    "input_hash",
+    "overall_score",
+    "skill_score",
+    "experience_score",
+    "domain_score",
+    "location_score",
+    "preference_score",
+    "recommendation",
+    "reasoning_summary"
+  ],
+  "title": "MatchResult",
+  "type": "object"
+}

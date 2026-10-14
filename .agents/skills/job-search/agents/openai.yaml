@@ -1,0 +1,4 @@
+interface:
+  display_name: "Job Search"
+  short_description: "Verified CareerOps job search workflow"
+  default_prompt: "Use $job-search to handle this CareerOps task."

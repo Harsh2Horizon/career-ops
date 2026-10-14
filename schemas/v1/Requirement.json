@@ -1,0 +1,42 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "text": {
+      "title": "Text",
+      "type": "string"
+    },
+    "category": {
+      "title": "Category",
+      "type": "string"
+    },
+    "technologies": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Technologies",
+      "type": "array"
+    },
+    "evidence": {
+      "title": "Evidence",
+      "type": "string"
+    },
+    "hard": {
+      "default": false,
+      "title": "Hard",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "text",
+    "category",
+    "evidence"
+  ],
+  "title": "Requirement",
+  "type": "object"
+}

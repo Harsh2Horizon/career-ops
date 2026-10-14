@@ -1,0 +1,54 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "field_id": {
+      "title": "Field Id",
+      "type": "string"
+    },
+    "label": {
+      "title": "Label",
+      "type": "string"
+    },
+    "value": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Value"
+    },
+    "source_fact_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Source Fact Ids",
+      "type": "array"
+    },
+    "sensitive": {
+      "default": false,
+      "title": "Sensitive",
+      "type": "boolean"
+    },
+    "explicitly_verified": {
+      "default": false,
+      "title": "Explicitly Verified",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "field_id",
+    "label"
+  ],
+  "title": "ApplicationAnswer",
+  "type": "object"
+}

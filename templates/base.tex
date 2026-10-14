@@ -1,0 +1,69 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{iftex}
+\ifPDFTeX
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\else
+\usepackage{fontspec}
+\setmainfont{<< font|tex >>}
+\fi
+\usepackage[a4paper,margin=0.55in]{geometry}
+\usepackage{enumitem}
+\usepackage[hidelinks,unicode]{hyperref}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\setlength{\emergencystretch}{3em}
+\raggedright
+\urlstyle{same}
+\definecolor{accent}{HTML}{<% if style == 'modern' %>214A64<% else %>222222<% endif %>}
+\titleformat{\section}{\large\scshape\color{accent}}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{<% if compact or style == 'compact' %>5pt<% else %>8pt<% endif %>}{3pt}
+\setlist[itemize]{leftmargin=1.2em,topsep=1pt,itemsep=<% if compact or style == 'compact' %>0pt<% else %>1pt<% endif %>,parsep=0pt}
+\begin{document}
+<% if resume.contact.get('full_name') %>
+{\LARGE\bfseries << resume.contact.full_name.text|tex >>}\par
+<% endif %>
+<% for field, claim in resume.contact.items() if field != 'full_name' %>
+<% if field == 'email' %>\href{<< ('mailto:' ~ claim.text)|link >>}{<< claim.text|tex >>}<% elif field in ['github','linkedin','portfolio'] %>\href{<< claim.text|link >>}{<< claim.text|tex >>}<% else %><< claim.text|tex >><% endif %><% if not loop.last %> \enspace|\enspace <% endif %>
+<% endfor %>
+\par
+<% if resume.skills %>
+\section{Technical Skills}
+<% for category, values in resume.skills.items() %>
+\textbf{<< category|tex >>:} <% for value in values %><< value.text|tex >><% if not loop.last %>, <% endif %><% endfor %>\par
+<% endfor %>
+<% endif %>
+<% if resume.experience %>
+\section{Professional Experience}
+<% for item in resume.experience %>
+\textbf{<< item.name|tex >>}\hfill {\small << item.duration|tex >>}\par
+\textit{<< item.role|tex >>}<% if item.location %>\hfill {\small << item.location|tex >>}<% endif %>\par
+<% if item.bullets %>\begin{itemize}
+<% for bullet in item.bullets %>\item << bullet.text|tex >>
+<% endfor %>\end{itemize}<% endif %>
+<% endfor %>
+<% endif %>
+<% if resume.projects %>
+\section{Projects}
+<% for item in resume.projects %>
+\textbf{<% if item.link %>\href{<< item.link|link >>}{<< item.name|tex >>}<% else %><< item.name|tex >><% endif %>}<% if item.duration %>\hfill {\small << item.duration|tex >>}<% endif %>\par
+<% if item.technologies %>{\small\textit{<% for technology in item.technologies %><< technology|tex >><% if not loop.last %>, <% endif %><% endfor %>}}\par<% endif %>
+<% if item.bullets %>\begin{itemize}
+<% for bullet in item.bullets %>\item << bullet.text|tex >>
+<% endfor %>\end{itemize}<% endif %>
+<% endfor %>
+<% endif %>
+<% if resume.education %>
+\section{Education}
+<% for item in resume.education %>
+\textbf{<< item.name|tex >>}\hfill {\small << item.duration|tex >>}\par
+<< item.role|tex >><% if item.grade %> --- Grade: << item.grade|tex >><% endif %><% if item.location %>\hfill {\small << item.location|tex >>}<% endif %>\par
+<% endfor %>
+<% endif %>
+\end{document}

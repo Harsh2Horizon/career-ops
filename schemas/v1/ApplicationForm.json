@@ -1,0 +1,235 @@
+{
+  "$defs": {
+    "ApplicationAnswer": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "field_id": {
+          "title": "Field Id",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "source_fact_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Source Fact Ids",
+          "type": "array"
+        },
+        "sensitive": {
+          "default": false,
+          "title": "Sensitive",
+          "type": "boolean"
+        },
+        "explicitly_verified": {
+          "default": false,
+          "title": "Explicitly Verified",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "field_id",
+        "label"
+      ],
+      "title": "ApplicationAnswer",
+      "type": "object"
+    },
+    "FormField": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "field_id": {
+          "title": "Field Id",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "control": {
+          "title": "Control",
+          "type": "string"
+        },
+        "required": {
+          "default": false,
+          "title": "Required",
+          "type": "boolean"
+        },
+        "options": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Options",
+          "type": "array"
+        },
+        "step": {
+          "default": 0,
+          "title": "Step",
+          "type": "integer"
+        },
+        "checked": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Checked"
+        }
+      },
+      "required": [
+        "field_id",
+        "label",
+        "control"
+      ],
+      "title": "FormField",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "job_id": {
+      "title": "Job Id",
+      "type": "string"
+    },
+    "company": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Company"
+    },
+    "job_title": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Job Title"
+    },
+    "job_description_hash": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Job Description Hash"
+    },
+    "url": {
+      "title": "Url",
+      "type": "string"
+    },
+    "fields": {
+      "items": {
+        "$ref": "#/$defs/FormField"
+      },
+      "title": "Fields",
+      "type": "array"
+    },
+    "answers": {
+      "items": {
+        "$ref": "#/$defs/ApplicationAnswer"
+      },
+      "title": "Answers",
+      "type": "array"
+    },
+    "unresolved": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Unresolved",
+      "type": "array"
+    },
+    "errors": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Errors",
+      "type": "array"
+    },
+    "concerns": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Concerns",
+      "type": "array"
+    },
+    "upload_hashes": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Upload Hashes",
+      "type": "object"
+    },
+    "resume_sha256": {
+      "title": "Resume Sha256",
+      "type": "string"
+    },
+    "profile_hash": {
+      "title": "Profile Hash",
+      "type": "string"
+    },
+    "review_digest": {
+      "default": "",
+      "title": "Review Digest",
+      "type": "string"
+    }
+  },
+  "required": [
+    "job_id",
+    "url",
+    "fields",
+    "answers",
+    "resume_sha256",
+    "profile_hash"
+  ],
+  "title": "ApplicationForm",
+  "type": "object"
+}

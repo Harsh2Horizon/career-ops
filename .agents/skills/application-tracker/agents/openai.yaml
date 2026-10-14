@@ -1,0 +1,4 @@
+interface:
+  display_name: "Application Tracker"
+  short_description: "Verified CareerOps application tracker workflow"
+  default_prompt: "Use $application-tracker to handle this CareerOps task."

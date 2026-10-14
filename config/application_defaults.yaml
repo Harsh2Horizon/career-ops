@@ -1,0 +1,8 @@
+mode: prepare_and_review
+require_submission_approval: true
+# Empty by design; no authorization, consent, salary, or demographic answers inferred.
+verified_answers: {}
+allowed_application_hosts: []
+allowed_resource_hosts: []
+max_form_steps: 8
+browser_timeout_ms: 15000

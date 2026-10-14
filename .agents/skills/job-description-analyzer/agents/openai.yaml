@@ -1,0 +1,4 @@
+interface:
+  display_name: "Job Description Analyzer"
+  short_description: "Verified CareerOps job description analyzer workflow"
+  default_prompt: "Use $job-description-analyzer to handle this CareerOps task."

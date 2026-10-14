@@ -1,0 +1,4 @@
+interface:
+  display_name: "Job Matcher"
+  short_description: "Verified CareerOps job matcher workflow"
+  default_prompt: "Use $job-matcher to handle this CareerOps task."

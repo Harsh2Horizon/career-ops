@@ -1,0 +1,4 @@
+interface:
+  display_name: "Latex Resume Builder"
+  short_description: "Verified CareerOps latex resume builder workflow"
+  default_prompt: "Use $latex-resume-builder to handle this CareerOps task."

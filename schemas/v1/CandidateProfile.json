@@ -1,0 +1,273 @@
+{
+  "$defs": {
+    "Fact": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "fact_id": {
+          "title": "Fact Id",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "professional",
+            "project",
+            "education",
+            "listed",
+            "approved",
+            "contact"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        }
+      },
+      "required": [
+        "fact_id",
+        "text",
+        "kind",
+        "provenance"
+      ],
+      "title": "Fact",
+      "type": "object"
+    },
+    "ProfileItem": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "item_id": {
+          "title": "Item Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "professional",
+            "project",
+            "education"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "role": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Role"
+        },
+        "duration": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Duration"
+        },
+        "location": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Location"
+        },
+        "grade": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Grade"
+        },
+        "link": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Link"
+        },
+        "technologies": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Technologies",
+          "type": "array"
+        },
+        "bullets": {
+          "items": {
+            "$ref": "#/$defs/Fact"
+          },
+          "title": "Bullets",
+          "type": "array"
+        },
+        "source_fields": {
+          "additionalProperties": true,
+          "title": "Source Fields",
+          "type": "object"
+        }
+      },
+      "required": [
+        "item_id",
+        "kind",
+        "name"
+      ],
+      "title": "ProfileItem",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "pointer": {
+          "title": "Pointer",
+          "type": "string"
+        },
+        "evidence": {
+          "title": "Evidence",
+          "type": "string"
+        },
+        "verified": {
+          "default": true,
+          "title": "Verified",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "source",
+        "pointer",
+        "evidence"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "profile_id": {
+      "title": "Profile Id",
+      "type": "string"
+    },
+    "source_path": {
+      "title": "Source Path",
+      "type": "string"
+    },
+    "source_hash": {
+      "title": "Source Hash",
+      "type": "string"
+    },
+    "contact": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Fact"
+      },
+      "title": "Contact",
+      "type": "object"
+    },
+    "education": {
+      "items": {
+        "$ref": "#/$defs/ProfileItem"
+      },
+      "title": "Education",
+      "type": "array"
+    },
+    "experience": {
+      "items": {
+        "$ref": "#/$defs/ProfileItem"
+      },
+      "title": "Experience",
+      "type": "array"
+    },
+    "projects": {
+      "items": {
+        "$ref": "#/$defs/ProfileItem"
+      },
+      "title": "Projects",
+      "type": "array"
+    },
+    "skills": {
+      "additionalProperties": {
+        "items": {
+          "$ref": "#/$defs/Fact"
+        },
+        "type": "array"
+      },
+      "title": "Skills",
+      "type": "object"
+    },
+    "approved_facts": {
+      "items": {
+        "$ref": "#/$defs/Fact"
+      },
+      "title": "Approved Facts",
+      "type": "array"
+    },
+    "source_fields": {
+      "additionalProperties": true,
+      "title": "Source Fields",
+      "type": "object"
+    }
+  },
+  "required": [
+    "profile_id",
+    "source_path",
+    "source_hash"
+  ],
+  "title": "CandidateProfile",
+  "type": "object"
+}

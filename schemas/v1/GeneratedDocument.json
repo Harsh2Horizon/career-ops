@@ -1,0 +1,73 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "job_id": {
+      "title": "Job Id",
+      "type": "string"
+    },
+    "input_hash": {
+      "title": "Input Hash",
+      "type": "string"
+    },
+    "profile_hash": {
+      "title": "Profile Hash",
+      "type": "string"
+    },
+    "pdf_path": {
+      "title": "Pdf Path",
+      "type": "string"
+    },
+    "tex_path": {
+      "title": "Tex Path",
+      "type": "string"
+    },
+    "upload_path": {
+      "title": "Upload Path",
+      "type": "string"
+    },
+    "sha256": {
+      "title": "Sha256",
+      "type": "string"
+    },
+    "template": {
+      "title": "Template",
+      "type": "string"
+    },
+    "pages": {
+      "maximum": 2,
+      "minimum": 1,
+      "title": "Pages",
+      "type": "integer"
+    },
+    "validated": {
+      "title": "Validated",
+      "type": "boolean"
+    },
+    "validation": {
+      "additionalProperties": true,
+      "title": "Validation",
+      "type": "object"
+    }
+  },
+  "required": [
+    "job_id",
+    "input_hash",
+    "profile_hash",
+    "pdf_path",
+    "tex_path",
+    "upload_path",
+    "sha256",
+    "template",
+    "pages",
+    "validated",
+    "validation"
+  ],
+  "title": "GeneratedDocument",
+  "type": "object"
+}

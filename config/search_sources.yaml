@@ -1,0 +1,13 @@
+# Enable named company boards after verifying their public board slug.
+sources: []
+# Example: {provider: greenhouse, board: stripe, company: Stripe, enabled: true}
+# Supported feed providers: greenhouse, lever, ashby.
+# Example permitted company page: {provider: structured, url: https://example.com/jobs, access_permitted: true, enabled: true}
+assisted_sources:
+  linkedin: https://www.linkedin.com/jobs/
+  indeed: https://www.indeed.com/
+  wellfound: https://wellfound.com/jobs
+  glassdoor: https://www.glassdoor.com/Job/
+  google: https://www.google.com/search
+  workday: null
+  ycombinator: https://www.workatastartup.com/jobs

@@ -1,0 +1,458 @@
+{
+  "$defs": {
+    "ApplicationAnswer": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "field_id": {
+          "title": "Field Id",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "source_fact_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Source Fact Ids",
+          "type": "array"
+        },
+        "sensitive": {
+          "default": false,
+          "title": "Sensitive",
+          "type": "boolean"
+        },
+        "explicitly_verified": {
+          "default": false,
+          "title": "Explicitly Verified",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "field_id",
+        "label"
+      ],
+      "title": "ApplicationAnswer",
+      "type": "object"
+    },
+    "ApplicationForm": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "job_id": {
+          "title": "Job Id",
+          "type": "string"
+        },
+        "company": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Company"
+        },
+        "job_title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Job Title"
+        },
+        "job_description_hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Job Description Hash"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "fields": {
+          "items": {
+            "$ref": "#/$defs/FormField"
+          },
+          "title": "Fields",
+          "type": "array"
+        },
+        "answers": {
+          "items": {
+            "$ref": "#/$defs/ApplicationAnswer"
+          },
+          "title": "Answers",
+          "type": "array"
+        },
+        "unresolved": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Unresolved",
+          "type": "array"
+        },
+        "errors": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Errors",
+          "type": "array"
+        },
+        "concerns": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Concerns",
+          "type": "array"
+        },
+        "upload_hashes": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Upload Hashes",
+          "type": "object"
+        },
+        "resume_sha256": {
+          "title": "Resume Sha256",
+          "type": "string"
+        },
+        "profile_hash": {
+          "title": "Profile Hash",
+          "type": "string"
+        },
+        "review_digest": {
+          "default": "",
+          "title": "Review Digest",
+          "type": "string"
+        }
+      },
+      "required": [
+        "job_id",
+        "url",
+        "fields",
+        "answers",
+        "resume_sha256",
+        "profile_hash"
+      ],
+      "title": "ApplicationForm",
+      "type": "object"
+    },
+    "FormField": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "field_id": {
+          "title": "Field Id",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "control": {
+          "title": "Control",
+          "type": "string"
+        },
+        "required": {
+          "default": false,
+          "title": "Required",
+          "type": "boolean"
+        },
+        "options": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Options",
+          "type": "array"
+        },
+        "step": {
+          "default": 0,
+          "title": "Step",
+          "type": "integer"
+        },
+        "checked": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Checked"
+        }
+      },
+      "required": [
+        "field_id",
+        "label",
+        "control"
+      ],
+      "title": "FormField",
+      "type": "object"
+    },
+    "GeneratedDocument": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "job_id": {
+          "title": "Job Id",
+          "type": "string"
+        },
+        "input_hash": {
+          "title": "Input Hash",
+          "type": "string"
+        },
+        "profile_hash": {
+          "title": "Profile Hash",
+          "type": "string"
+        },
+        "pdf_path": {
+          "title": "Pdf Path",
+          "type": "string"
+        },
+        "tex_path": {
+          "title": "Tex Path",
+          "type": "string"
+        },
+        "upload_path": {
+          "title": "Upload Path",
+          "type": "string"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        },
+        "template": {
+          "title": "Template",
+          "type": "string"
+        },
+        "pages": {
+          "maximum": 2,
+          "minimum": 1,
+          "title": "Pages",
+          "type": "integer"
+        },
+        "validated": {
+          "title": "Validated",
+          "type": "boolean"
+        },
+        "validation": {
+          "additionalProperties": true,
+          "title": "Validation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "job_id",
+        "input_hash",
+        "profile_hash",
+        "pdf_path",
+        "tex_path",
+        "upload_path",
+        "sha256",
+        "template",
+        "pages",
+        "validated",
+        "validation"
+      ],
+      "title": "GeneratedDocument",
+      "type": "object"
+    },
+    "Status": {
+      "enum": [
+        "discovered",
+        "analyzed",
+        "matched",
+        "shortlisted",
+        "resume_generated",
+        "application_started",
+        "needs_information",
+        "ready_for_review",
+        "approved",
+        "submitted",
+        "submission_unverified",
+        "failed",
+        "withdrawn",
+        "rejected",
+        "interview",
+        "offer"
+      ],
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "application_id": {
+      "title": "Application Id",
+      "type": "string"
+    },
+    "job_id": {
+      "title": "Job Id",
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/Status"
+    },
+    "form": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ApplicationForm"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "document": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/GeneratedDocument"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "approval_digest": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Approval Digest"
+    },
+    "approval_expires_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Approval Expires At"
+    },
+    "submitted_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Submitted At"
+    },
+    "confirmation_reference": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Confirmation Reference"
+    },
+    "confirmation_evidence": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Confirmation Evidence"
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "title": "Updated At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "application_id",
+    "job_id",
+    "status"
+  ],
+  "title": "ApplicationRecord",
+  "type": "object"
+}

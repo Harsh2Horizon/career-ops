@@ -1,0 +1,74 @@
+{
+  "$defs": {
+    "Status": {
+      "enum": [
+        "discovered",
+        "analyzed",
+        "matched",
+        "shortlisted",
+        "resume_generated",
+        "application_started",
+        "needs_information",
+        "ready_for_review",
+        "approved",
+        "submitted",
+        "submission_unverified",
+        "failed",
+        "withdrawn",
+        "rejected",
+        "interview",
+        "offer"
+      ],
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "event_id": {
+      "title": "Event Id",
+      "type": "string"
+    },
+    "application_id": {
+      "title": "Application Id",
+      "type": "string"
+    },
+    "previous_status": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Status"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "status": {
+      "$ref": "#/$defs/Status"
+    },
+    "timestamp": {
+      "format": "date-time",
+      "title": "Timestamp",
+      "type": "string"
+    },
+    "reason": {
+      "title": "Reason",
+      "type": "string"
+    }
+  },
+  "required": [
+    "event_id",
+    "application_id",
+    "previous_status",
+    "status",
+    "reason"
+  ],
+  "title": "ApplicationEvent",
+  "type": "object"
+}

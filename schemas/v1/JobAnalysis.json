@@ -1,0 +1,183 @@
+{
+  "$defs": {
+    "Requirement": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "category": {
+          "title": "Category",
+          "type": "string"
+        },
+        "technologies": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Technologies",
+          "type": "array"
+        },
+        "evidence": {
+          "title": "Evidence",
+          "type": "string"
+        },
+        "hard": {
+          "default": false,
+          "title": "Hard",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "text",
+        "category",
+        "evidence"
+      ],
+      "title": "Requirement",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "job_id": {
+      "title": "Job Id",
+      "type": "string"
+    },
+    "input_hash": {
+      "title": "Input Hash",
+      "type": "string"
+    },
+    "required_qualifications": {
+      "items": {
+        "$ref": "#/$defs/Requirement"
+      },
+      "title": "Required Qualifications",
+      "type": "array"
+    },
+    "preferred_qualifications": {
+      "items": {
+        "$ref": "#/$defs/Requirement"
+      },
+      "title": "Preferred Qualifications",
+      "type": "array"
+    },
+    "responsibilities": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Responsibilities",
+      "type": "array"
+    },
+    "technologies": {
+      "additionalProperties": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "title": "Technologies",
+      "type": "object"
+    },
+    "ats_terminology": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Ats Terminology",
+      "type": "array"
+    },
+    "minimum_years": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Minimum Years"
+    },
+    "maximum_years": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Maximum Years"
+    },
+    "experience_evidence": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Experience Evidence"
+    },
+    "seniority": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Seniority"
+    },
+    "education_requirements": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Education Requirements",
+      "type": "array"
+    },
+    "eligibility_requirements": {
+      "items": {
+        "$ref": "#/$defs/Requirement"
+      },
+      "title": "Eligibility Requirements",
+      "type": "array"
+    },
+    "emphasis_areas": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Emphasis Areas",
+      "type": "array"
+    },
+    "uncertainties": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Uncertainties",
+      "type": "array"
+    }
+  },
+  "required": [
+    "job_id",
+    "input_hash"
+  ],
+  "title": "JobAnalysis",
+  "type": "object"
+}

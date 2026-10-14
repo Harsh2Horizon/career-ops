@@ -1,0 +1,17 @@
+.venv/
+.cache/
+.env
+resume.yaml
+config/candidate_private.yaml
+data/
+output/
+*.sqlite*
+*.log
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+browser-state/
+*.aux
+*.out
+*.synctex.gz

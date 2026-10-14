@@ -1,0 +1,34 @@
+candidate_preferences:
+  target_roles:
+    - Software Development Engineer
+    - Backend Engineer
+    - Software Engineer
+    - Systems Software Engineer
+    - Database Engineer
+    - Distributed Systems Engineer
+    - Data Engineer
+    - AI Engineer
+    - LLM Application Engineer
+    - AI Infrastructure Engineer
+  experience: {minimum_years: 0, maximum_years: 2}
+  preferred_domains: [Backend Engineering, Database Systems, Distributed Systems, Data Infrastructure, Streaming Systems, Agentic AI]
+  preferred_technologies: [Go, C++, Python, MySQL, PostgreSQL, Apache Flink, StarRocks, Distributed Systems, Database Systems]
+  excluded_technologies: []
+  excluded_roles: [Senior Software Engineer, Staff Engineer, Engineering Manager]
+  seniority_levels: []
+  excluded_seniorities: [senior, staff, principal, manager]
+  locations: []
+  work_modes: []
+  preferred_countries: []
+  preferred_companies: []
+  excluded_companies: []
+  industries: []
+  company_sizes: []
+  salary: null
+  visa_sponsorship_required: null
+  job_recency_days: 14
+  minimum_match_score: 65
+  weights: {technical: 35, experience: 25, domain: 20, location: 10, other: 10}
+  resume: {default_template: professional, preferred_pages: 1, max_pages: 2}
+  applications: {default_mode: prepare_and_review, require_submission_approval: true}
+  concurrency: 4

@@ -1,0 +1,39 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "skill": {
+      "title": "Skill",
+      "type": "string"
+    },
+    "level": {
+      "enum": [
+        "professional",
+        "project",
+        "listed",
+        "approved",
+        "unverified"
+      ],
+      "title": "Level",
+      "type": "string"
+    },
+    "fact_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Fact Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "skill",
+    "level"
+  ],
+  "title": "SkillEvidence",
+  "type": "object"
+}

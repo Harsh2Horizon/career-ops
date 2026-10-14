@@ -1,0 +1,34 @@
+resume:
+  contact:
+    full name: Test Candidate
+    email: candidate@example.invalid
+    phone: '+00 123456789'
+    location: Test City
+    github: https://example.com/candidate
+  education:
+    - school: Test Institute
+      degree: Bachelor of Technology
+      duration: 2021-2025
+      grade: 7.71
+  work experience:
+    - company: Example Employer
+      role: Associate Developer
+      duration: June 2025 - May 2026
+      work description:
+        line2: Built MySQL pipelines using Apache Flink CDC and optimized JVM memory allocation.
+        line1: Migrated analytical queries to StarRocks and improved dashboard query performance by 6x.
+  Projects:
+    - project name: Example Storage Engine
+      Technology used: C++
+      link: https://example.com/storage
+      description:
+        line1: Built a C++20 LSM-tree database with WAL, SSTables, Bloom filters, and MVCC.
+        line2: Implemented concurrent operations and a multithreaded HTTP API server.
+    - name:
+      link:
+      description: {line1: null, line2: ''}
+  technical_skills:
+    Languages: [C++, Go, Python, SQL]
+    Data Systems: [MySQL, PostgreSQL, Apache Flink, StarRocks]
+    Artificial Intelligence: [Large Language Models (LLMs), PyTorch, LangChain, REST APIs for AI Applications]
+  unfamiliar_field: {preserve: true}

@@ -1,0 +1,1 @@
+../../../../scripts/skill_cli.py

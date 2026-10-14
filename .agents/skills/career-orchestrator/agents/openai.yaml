@@ -1,0 +1,4 @@
+interface:
+  display_name: "Career Orchestrator"
+  short_description: "Verified CareerOps career orchestrator workflow"
+  default_prompt: "Use $career-orchestrator to handle this CareerOps task."

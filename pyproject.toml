@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "career-ops"
+version = "0.1.0"
+description = "Composable, evidence-based career workflows for Codex"
+requires-python = ">=3.12"
+dependencies = [
+  "pydantic>=2.10,<3", "PyYAML>=6,<7",
+  "typer>=0.15,<1", "rich>=13,<16", "httpx>=0.28,<1",
+  "beautifulsoup4>=4.12,<5", "Jinja2>=3.1,<4", "pypdf>=5,<7",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1"]
+
+[project.scripts]
+careerops = "career_ops.cli.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/career_ops"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["pdf: requires LaTeX and Poppler", "browser: launches local Chromium"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501", "B008"]
